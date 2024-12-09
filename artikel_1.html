@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Kalori</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .back-button {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Kalori</h1>
+        <form id="calorieForm">
+            <label for="height">Tinggi Badan (cm):</label>
+            <input type="number" id="height" placeholder="Masukkan tinggi badan Anda" required>
+
+            <label for="weight">Berat Badan (kg):</label>
+            <input type="number" id="weight" placeholder="Masukkan berat badan Anda" required>
+
+            <button type="button" onclick="calculateCalories()">Hitung Kalori</button>
+        </form>
+
+        <div class="result" id="result"></div>
+
+        <!-- Tombol Kembali -->
+        <a href="file:///C:\Users\LENOVO\Desktop\html awal\index.html.html" class="back-button">Kembali</a>
+    </div>
+
+    <script>
+        function calculateCalories() {
+            // Ambil nilai dari input tinggi dan berat
+            const height = parseFloat(document.getElementById("height").value);
+            const weight = parseFloat(document.getElementById("weight").value);
+
+            // Periksa apakah input valid
+            if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+                document.getElementById("result").innerHTML = "Masukkan tinggi dan berat badan yang valid.";
+                return;
+            }
+
+            // Rumus perkiraan kalori yang harus dibakar (contoh sederhana)
+            // Rumus: Kalori = Berat badan (kg) × Tinggi badan (cm) ÷ 100
+            const calories = (weight * height) / 100;
+
+            // Tampilkan hasilnya
+            document.getElementById("result").innerHTML = 
+                `Anda perlu membakar sekitar <strong>${calories.toFixed(2)} kalori</strong> berdasarkan tinggi dan berat badan Anda.`;
+        }
+    </script>
+</body>
+</html>
